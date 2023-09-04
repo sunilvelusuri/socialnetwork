@@ -53,6 +53,7 @@ module.exports.create =(req,res)=>{
 // user signIn
 
 module.exports.createSession = (req,res)=>{
+    return res.redirect('/');
 
 }
 
