@@ -1,8 +1,13 @@
 const express =require('express');
-const app=express();
 const port=7000;
+const cookieParser =require('cookie-parser');
 const expressLayouts=require('express-ejs-layouts');
-app.use(express.static('./assets'));
+const db=require('./config/moongose');
+const app=express();
+app.use(express.urlencoded());
+app.use(cookieParser());
+app.use(express.static('./assets'))
+
 // we have to declare the usage of layouts before the routers declaration because we use views in routers
 app.use(expressLayouts);
 app.set("layout extractStyles", true);
