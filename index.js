@@ -7,6 +7,7 @@ const db=require('./config/moongose');
 const session=require('express-session');               // Used for session cookie
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
+const MongoStore=require('connect-mongo');
 
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -28,12 +29,19 @@ app.use(session({
     resave:false,
     cookie:{
         maxAge: (1000*60*100)
+    },
+    store: MongoStore.create({
+        mongoUrl:'mongodb://127.0.0.1/socialnetwork_Development',
+        autoRemove:'disabled'
+    }),
+    function (err){
+        console.log('error while connect-mongodb',err);
     }
 }))
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(passport.setAuthenticatedUser);
 // use express routers
 app.use('/',require('./routes'));
 

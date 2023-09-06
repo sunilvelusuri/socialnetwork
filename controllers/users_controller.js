@@ -6,7 +6,12 @@ module.exports.profile=(req,res)=>{
     });
 }
 
+// Render the signup page
+
 module.exports.signup=(req,res)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('signup',{
         title:'signup page'
     });
@@ -15,6 +20,9 @@ module.exports.signup=(req,res)=>{
 // Render the signin page
 
 module.exports.signin=(req,res)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('signin',{
         title:'signin page'
     });
@@ -54,11 +62,14 @@ module.exports.create =(req,res)=>{
 
 module.exports.createSession = (req,res)=>{
     return res.redirect('/');
-
 }
 
 // // sign out
 
 module.exports.sessionDelete=(req,res)=>{
-
+    req.logout((err)=>{
+        
+        return res.redirect('/');
+    });
+    
 }
