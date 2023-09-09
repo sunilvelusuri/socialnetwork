@@ -1,5 +1,7 @@
 const User= require('../models/user');
 
+const { post } = require('../routes');
+
 module.exports.profile=(req,res)=>{
     return res.render('user_profile',{
         title:'profile',
@@ -58,6 +60,8 @@ module.exports.create =(req,res)=>{
     });
 };
 
+
+
 // user signIn
 
 module.exports.createSession = (req,res)=>{
@@ -71,5 +75,5 @@ module.exports.sessionDelete=(req,res)=>{
         
         return res.redirect('/');
     });
-    
+
 }

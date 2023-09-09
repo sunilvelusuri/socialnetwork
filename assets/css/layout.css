@@ -1,4 +1,6 @@
 body{
     /* margin: 0px; */
+    display: inline-block;
+    justify-content: center;
     text-align: center;
 }

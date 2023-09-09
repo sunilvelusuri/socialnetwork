@@ -1,14 +1,10 @@
-<link rel="stylesheet" href="'/css/header.css">
+<link rel="stylesheet" href="/css/header.css">
 <header>
     <h2>Facebook</h2>
         <%if(locals.user){%>
             <p><a href="/users/profile"><%= locals.user.name%></a></p>
-            <!-- <p><%= locals.user.name%></p> -->
             <p><a href="/users/sign-out">Sign Out</a></p>
-            <!-- <li></li>    
-            <li>
-                
-            </li> -->
+            
         <%}else{%>
             <p><a href="/users/sign-in">Sign In</a></p>
             <p><a href="/users/sign-up">Sign Up</a></p>

@@ -20,7 +20,7 @@ const MongoStore=require('connect-mongo');
 
 app.use(express.urlencoded());
 app.use(cookieParser());
-app.use(express.static('./assets'))
+app.use(express.static('./assets'));
 
 // we have to declare the usage of layouts before the routers declaration because we use views in routers
 app.use(expressLayouts);
